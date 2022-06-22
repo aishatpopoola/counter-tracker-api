@@ -23,4 +23,32 @@ class DayCountService
         $allCounts = DayCount::orderBy('day')->get();
         return $allCounts;
     }
+
+    public static function addNewDayCount(array $data): array
+    {
+        $count = DayCount::where('day', '=', today())->first();
+        $isFirstTimeCountingToday;
+        if (!$count) {
+            $count = new DayCount;
+            $count->day = today();
+            $count->count = $data['counter'];
+            $isFirstTimeCountingToday = $data['counter'];
+            $lastCount = DayCount::where('status', '=', true)->first();
+
+            if ($lastCount) {
+                $lastCount->status = false;
+                $lastCount->save();
+            }
+
+            $count->status = true;
+        } else {
+            $count->count += $data['counter'];
+            $count->updated_at = now();
+            $isFirstTimeCountingToday = 0;
+        }
+        
+        $count->save();
+
+        return [ 'count' => $count, 'is_first_time_counting_today' => $isFirstTimeCountingToday];
+    }
 }
