@@ -2,6 +2,10 @@
 
 This projects serves as the API endpoint for a counter project. The project serves saves a all the counts per day.
 
+@Todo
+
+Project still needs to be deployed, I used Laravel 6 for the backend API which uses PHP 7.* while heroku was using 8.* to install the dependencies and leading to issues. While this is submitted i'll keep working towards finding a solution to deploying the backend code
+
 
 ## Live URL
 [Endpoint Url]()
