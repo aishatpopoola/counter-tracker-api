@@ -105,7 +105,7 @@ Response:
 - Clone the project
 
 ```bash
-git clone 
+git clone https://github.com/aishatpopoola/counter-tracker-api.git
 
 ```
 
