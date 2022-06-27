@@ -14,4 +14,9 @@ class DayCount extends Model
     protected $dates = [
         'day',
     ];
+
+    public function getDayAttribute($value)
+    {
+        return \Carbon\Carbon::parse($value)->isoFormat('MMMM Do YYYY');
+    }
 }
